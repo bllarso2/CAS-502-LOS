@@ -1,0 +1,2 @@
+Right now, the only issue I see is incorporating dummy co-morbidity data. The model works, which is a good thing. But it's very simple, admittedly. 
+We need to add at least some visualization to the Python model before moving on the an agent-based / NetLogo model. 
