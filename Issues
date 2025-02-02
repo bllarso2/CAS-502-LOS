@@ -1,2 +1,5 @@
 Right now, the only issue I see is incorporating dummy co-morbidity data. The model works, which is a good thing. But it's very simple, admittedly. 
 We need to add at least some visualization to the Python model before moving on the an agent-based / NetLogo model. 
+
+BL: One issue that I forsee is the ability to find complimentary data to the original set David had from his client. This could be a challenge for us when trying to broaden the study from where it was originally completed. 
+BL: What type of effective visuals can we use to really show the relationship between LOS and lifestyle factors. Maybe a principal component analysis would aid us in showing which lifestyle factor is most impactful?
