@@ -1,5 +1,0 @@
-I'm Dave Cooper
-I'm a complex adaptive systems "social" scientist
-My background is in organizational change
-I don't want to make changes to the Python code. I'm at the extent of what I can do. I could add some simple code for graphs, but for now I will leave it as is. Hence, I'm simply creating some new files in Github within our shared repository. 
-Also, I've looked at the code here in Github, but I have no idea how to edit it--not safely, anyway. 

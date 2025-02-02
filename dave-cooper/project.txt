@@ -1,3 +1,0 @@
-I want write my own code to predict hospital length of stay rather than use Dataiku (which is easy, by the way)
-I would also like to add co-morbidities, either to the either to the Python model or in a agent-based model, or both (if there's time) 
-I suckered Brad into teaming up with me:) 
