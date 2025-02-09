@@ -3,3 +3,5 @@ We need to add at least some visualization to the Python model before moving on 
 
 BL: One issue that I forsee is the ability to find complimentary data to the original set David had from his client. This could be a challenge for us when trying to broaden the study from where it was originally completed. 
 BL: What type of effective visuals can we use to really show the relationship between LOS and lifestyle factors. Maybe a principal component analysis would aid us in showing which lifestyle factor is most impactful?
+DC: The next big issue I forsee is building the ABM. I build a lot of these models in NetLogo, but they are pedagoical--I use them to teach clients about CAS concepts. So, I can build this model fairly easily. If we wanted to make this a predictive model, which is what I'd like to do, that's going to require some experimentation. My intent is to do my usual--build a simple pedagocial model and then just play with it. 
+I have not added the synthetic data to the python model. I'll do that this evening and then see what happens. 
