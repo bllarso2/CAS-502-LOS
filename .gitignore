@@ -1,2 +1,4 @@
 
 venv/
+streamlit_env/
+.DS_Store
