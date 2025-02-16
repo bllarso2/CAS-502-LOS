@@ -1,17 +1,33 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Ensure Python finds data_processing
+
 import unittest
 import pandas as pd
-from streamlit_app import load_data
+from data_processing import preprocess_data  # Now Python should recognize it
 
 class TestDataProcessing(unittest.TestCase):
 
-    def test_missing_values_count(self):
-        """Check the number of missing values instead of failing immediately."""
-        df = load_data("Hospital-LOS.csv")
-        missing_count = df.isnull().sum().sum()  # Count total missing values
-        print(f"Missing values found: {missing_count}")
+    def setUp(self):
+        """Create a sample dataset before each test."""
+        self.df = pd.DataFrame({
+            "Stay (in days)": [1, 2, None, 4],  # 4 values ✅
+            "Department": ["gynecology", "radiotherapy", "surgery", "anesthesia"],  # 4 values ✅
+            "Gender": ["M", "F", "M", "F"]  # 4 values ✅
+        })
 
-        # Allow up to 5 missing values, otherwise fail
-        self.assertLessEqual(missing_count, 5, "Dataset contains too many missing values!")
+    def test_preprocess_data(self):
+        """Test if preprocess_data correctly handles missing values and transformations."""
+        processed_df = preprocess_data(self.df)
+
+        # Ensure missing values are handled
+        self.assertFalse(processed_df.isnull().values.any(), "Processed data should not have missing values.")
+
+        # Ensure 'Stay (in days)' column is still present
+        self.assertIn("Stay (in days)", processed_df.columns, "Processed data should contain 'Stay (in days)' column.")
+
+        # Ensure 'Stay (in days)' column is float type
+        self.assertEqual(processed_df["Stay (in days)"].dtype, float, "'Stay (in days)' column should be of type float.")
 
 if __name__ == "__main__":
     unittest.main()
