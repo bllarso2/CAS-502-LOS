@@ -11,9 +11,9 @@ class TestDataProcessing(unittest.TestCase):
     def setUp(self):
         """Create a sample dataset before each test."""
         self.df = pd.DataFrame({
-            "Stay (in days)": [1, 2, None, 4],  # 4 values ✅
-            "Department": ["gynecology", "radiotherapy", "surgery", "anesthesia"],  # 4 values ✅
-            "Gender": ["M", "F", "M", "F"]  # 4 values ✅
+            "Stay (in days)": [1, 2, None, 4],  # 4 values 
+            "Department": ["gynecology", "radiotherapy", "surgery", "anesthesia"],  # 4 values 
+            "Gender": ["M", "F", "M", "F"]  # 4 values 
         })
 
     def test_preprocess_data(self):
