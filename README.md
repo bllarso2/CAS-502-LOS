@@ -21,3 +21,23 @@ Agent-Based Simulation: Implementing an ABM to dynamically simulate different pa
 Revenue Projection Model: Estimating financial impact based on predicted LOS ranges over 6 months, 1 year, 5 years, and 10 years.
 Comparative Analysis: Benchmarking LOS predictions against other hospitals (local, regional, national).
 Web-Based Dashboard: Making our model accessible via a web-based interface for real-time interaction.
+
+# How to Report Bugs and Feature Requests
+## Bug Reports
+If looking to report bugs please reach out to project owners via email - bllarso2@asu.edu or dave@verge.coach.
+
+When reporting a bug please include as many details as possible such as:
+- A clear and descriptive title.
+- Steps to reproduce the issue.
+- Expected vs. actual behavior.
+- Screenshots or error logs, if applicable.
+- Your operating system and environment details.
+
+## Feature Requests:
+Feature Requests:
+If you have an idea for a new feature or an enhancement, please:
+
+Describe the feature and the problem it solves.
+Explain how you see it working. Provide any additional context or examples that can help us understand the request.
+Please submit all issues via the [Issues Tab Link] (https://github.com/bllarso2/CAS-502-LOS/issues) on GitHub.
+
