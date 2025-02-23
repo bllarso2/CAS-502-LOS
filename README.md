@@ -21,3 +21,6 @@ Agent-Based Simulation: Implementing an ABM to dynamically simulate different pa
 Revenue Projection Model: Estimating financial impact based on predicted LOS ranges over 6 months, 1 year, 5 years, and 10 years.
 Comparative Analysis: Benchmarking LOS predictions against other hospitals (local, regional, national).
 Web-Based Dashboard: Making our model accessible via a web-based interface for real-time interaction.
+
+# How to Report Bugs and Feature Requests
+If looking to report bugs please reach out to project owners via email - bllarso2@asu.edu or dave@verge.coach.
