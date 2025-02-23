@@ -40,5 +40,5 @@ If you have an idea for a new feature or an enhancement, please:
 Describe the feature and the problem it solves.
 Explain how you envision it working.
 Provide any additional context or examples that can help us understand the request.
-Please submit all issues via the [Issues tab] (https://github.com/bllarso2/CAS-502-LOS/issues) on GitHub.
+Please submit all issues via the [Issues Tab Link] (https://github.com/bllarso2/CAS-502-LOS/issues) on GitHub.
 
