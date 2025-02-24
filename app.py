@@ -12,10 +12,10 @@ def main():
     #    We'll use .unique() to get unique values in each column
     department_list = df["Department"].unique()
     age_list = df["Age"].unique()
-    gender_list = df["Gender"].unique()
+    gender_list = df["gender"].unique()
     admission_list = df["Type of Admission"].unique()
     severity_list = df["Severity of Illness"].unique()
-    condition_list = df["Condition"].unique()
+    condition_list = df["health_conditions"].unique()
     
     selected_department = st.selectbox("Select Department", department_list)
     selected_age = st.selectbox("Select Age Range", age_list)
