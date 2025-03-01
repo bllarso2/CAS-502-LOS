@@ -20,7 +20,7 @@ def load_data(file_path="Hospital-LOS.csv"):
 @st.cache_resource
 def train_model(df):
     # Define features and target
-    # We drop "LOS" (target) and "patientid" (assuming it's an identifier) from features.
+    # Drop "LOS" (target) and "patientid" (assuming it's an identifier) from features.
     X = df.drop(columns=["LOS", "patientid"])
     y = df["LOS"]
 
