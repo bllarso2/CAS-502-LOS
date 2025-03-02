@@ -1,11 +1,11 @@
 globals [
-  avg-los  ;; Average Length of Stay
+  avg-los  ;; Average Length of Stay across all patients
 ]
 
 turtles-own [
-  patient-los
-  num-comorbidities
-  has-septicemia?  ;; Renamed to avoid conflict with global switch
+  patient-los  ;; Length of Stay for this turtle (patient)
+  num-comorbidities  ;; Total number of active comorbidities
+  has-septicemia?  ;; Boolean flags for each comorbidity
   has-chf?
   has-pneumonia?
   has-copd?
@@ -20,19 +20,19 @@ to setup
   clear-all
   create-turtles 100 [
     setxy random-xcor random-ycor
-    assign-comorbidities  ;; Ensure unique comorbidities
-    set patient-los compute-los num-comorbidities
-    set color scale-color red patient-los 5 15
+    assign-comorbidities  ;; Assigns each patient unique comorbidities
+    set patient-los compute-los num-comorbidities  ;; Computes initial LOS
+    set color scale-color red patient-los 5 15  ;; Colors patient based on LOS
   ]
   calculate-avg-los
   update-histogram
   reset-ticks
 end
 
-
 to go
   ask turtles [
     ;; Assign comorbidities based on user-defined global switches
+    ;; If a switch (e.g., septicemia?) is ON, all patients will have that comorbidity
     set has-septicemia? septicemia?
     set has-chf? chf?
     set has-pneumonia? pneumonia?
@@ -43,27 +43,25 @@ to go
     set has-skin-infections? skin-infections?
     set has-uti? uti?
 
-    ;; Recalculate comorbidities based on updated values
+    ;; Recalculate comorbidities and LOS dynamically
     set num-comorbidities count-turtle-comorbidities self
     set patient-los compute-los num-comorbidities
-    set color scale-color red patient-los 5 15
+    set color scale-color red patient-los 5 15  ;; Recolor based on new LOS
   ]
 
   calculate-avg-los
-  update-histogram
+  update-histogram  ;; Updates the histogram with new LOS values
   tick
 end
 
 ;; Compute length of stay using a polynomial regression approach
 to-report compute-los [n]
-  let base-los 5
-  let penalty (comorbidity-penalty * n)
-  let random-variation random-float 5  ;; Increase variation
-  let los base-los + penalty + (0.5 * n ^ 2) + random-variation
+  let base-los 5  ;; Baseline LOS in days
+  let penalty (comorbidity-penalty * n)  ;; LOS increase per comorbidity
+  let random-variation random-float 5  ;; Adds random variation (0-5 days) to simulate unpredictable hospital factors
+  let los base-los + penalty + (0.5 * n ^ 2) + random-variation  ;; Quadratic relationship for more severe conditions
   report los
 end
-
-
 
 to assign-comorbidities
   let comorbidity-list shuffle [
@@ -72,10 +70,10 @@ to assign-comorbidities
     "has-skin-infections?" "has-uti?"
   ]
 
-  ;; Randomly determine how many comorbidities each turtle gets
-  let num-to-assign random 5  ;; Each turtle gets between 0 and 4 comorbidities
+  ;; Randomly determine how many comorbidities each turtle gets (0 to 4)
+  let num-to-assign random 5
 
-  ;; Set all comorbidities to false first
+  ;; Reset all comorbidities to false
   set has-septicemia? false
   set has-chf? false
   set has-pneumonia? false
@@ -89,16 +87,13 @@ to assign-comorbidities
   ;; Assign comorbidities randomly based on num-to-assign
   repeat num-to-assign [
     let selected first comorbidity-list
-    run (word "set " selected " true")  ;; Dynamically set a variable
-    set comorbidity-list but-first comorbidity-list  ;; Remove from list
+    run (word "set " selected " true")  ;; Dynamically assigns the selected comorbidity
+    set comorbidity-list but-first comorbidity-list  ;; Remove assigned comorbidity from list
   ]
 
   ;; Update num-comorbidities correctly
   set num-comorbidities count-turtle-comorbidities self
 end
-
-
-
 
 ;; Count active comorbidities
 to-report count-turtle-comorbidities [t]
@@ -115,14 +110,14 @@ to-report count-turtle-comorbidities [t]
   report total
 end
 
-
-
+;; Calculate the average length of stay across all turtles
 to calculate-avg-los
   if any? turtles [
     set avg-los mean [patient-los] of turtles
   ]
 end
 
+;; Updates the LOS histogram after each tick
 to update-histogram
   set-current-plot "LOS Distribution"
   clear-plot
@@ -131,9 +126,9 @@ to update-histogram
   ]
 end
 
+
 ;; Turtles are turning white as soon as I click "go." Not sure why that is. The turtles should be
 ;; different shades of red to depict variations in length of stay.
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
